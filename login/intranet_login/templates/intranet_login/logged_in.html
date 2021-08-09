@@ -1,0 +1,38 @@
+{% extends 'intranet_login/base_work.html' %}
+{% load static %}
+
+{% block head %}{% endblock %}
+
+{% block style %}
+<style>
+    .button2 {
+        border: none;
+        background-color: #2D756C;
+        color: white;
+        max-width: 100%;
+        width: 270px;
+        min-height: 50px;
+        font-size: 30px;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+
+    .button2:hover {
+        background-color: mediumseagreen;
+        color: white;
+    }
+</style>
+{% endblock %}
+
+{% block extracontent %}
+    <br>
+    <h1 style="margin-right: 100px; float: left">Welcome {{ name }}!</h1>
+    <img src="{% static 'intranet_login/Logo_6_grau_2.png' %}" style="height: 100px; float: top; margin-left: 60px">
+    <button class="button2" style="float: right; margin-right: 10px" onclick="window.location.href='{% url 'work-login' %}';">Log out</button>
+    <br><hr><br>
+    <img src="{% static 'intranet_login/Intranet.svg' %}" style="width: -moz-available"><br><br><br>
+{% endblock %}

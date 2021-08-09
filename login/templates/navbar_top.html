@@ -1,0 +1,45 @@
+{% load static %}
+
+<style>
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+    }
+
+    li {
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    li a:hover {
+        color: white;
+        text-decoration: none;
+    }
+
+    li a:hover:not(.active) {
+        background-color: #111;
+    }
+
+    .active {
+        background-color: mediumseagreen;
+        color: white;
+    }
+</style>
+
+<nav>
+    <ul>
+        <li style="float: left"><a class="active" href="http://127.0.0.1:8000/">Demo Start</a></li>
+        <li style="float: left"><a href="{% url 'work-login' %}">Intranet Login</a></li>
+        <li style="float: right"><a href="{% url 'manage_agent-home' %}">Manage 'Intranet Login Agent'</a></li>
+        <li style="float: inside"></li>
+    </ul>
+</nav>

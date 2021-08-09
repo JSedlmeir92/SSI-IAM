@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Intranet Login Agent</h1><hr>
+    <table>
+        <tr>
+            <td><h2>Connections:</h2></td>
+            <td><h2>Invitations:</h2></td>
+        </tr>
+        <tr>
+            <td><p>Quantity: {{ connections_quantity2 }}</p></td>
+            <td><p>Quantity: {{ connections_invitation2 }}</p></td>
+        </tr>
+        <tr>
+            <td><button class="button" style="width: 400px" onclick="window.location.href='{% url 'manage_agent_2-remove_connection' %}';">Remove all Connections</button></td>
+            <td><button class="button" style="width: 400px" onclick="window.location.href='{% url 'manage_agent_2-remove_invitation' %}';">Delete Invitations</button></td>
+        </tr>
+        <tr>
+            <td><h2>Credentials:</h2></td>
+            <td><h2>Proofs:</h2></td>
+        </tr>
+        <tr>
+            <td><p>Quantity: {{ credential_quantity2 }}</p></td>
+            <td><p>Quantity: {{ proof_quantity2 }}</p></td>
+        </tr>
+        <tr>
+            <td><button class="button" style="width: 400px" onclick="window.location.href='{% url 'manage_agent_2-remove_credential' %}';">Remove Credentials</button></td>
+            <td><button class="button" style="width: 400px" onclick="window.location.href='{% url 'manage_agent_2-remove_proof' %}';">Remove Proofs</button></td>
+        </tr>
+    </table>
+    <br><hr><br>
+    <h2>Reset Agent</h2>
+    <p>Connections, credentials and proofs are deleted.</p>
+    <td><button class="button" style="width: 400px" onclick="window.location.href='{% url 'manage_agent-reset' %}';">Reset Intranet Login Agent</button></td>
+{% endblock %}

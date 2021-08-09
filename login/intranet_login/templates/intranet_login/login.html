@@ -1,0 +1,100 @@
+{% extends 'intranet_login/base_work.html' %}
+{% load static %}
+
+{% block head %}
+    {% if name %}
+    {% else %}
+        <meta http-equiv="refresh" content="10;URL={% url 'work-login_loading2' %}">
+    {% endif %}
+{% endblock %}
+
+{% block style %}
+    <style>
+        .button2 {
+            background-color: #576A87;
+            color: white;
+        }
+
+        .button2:hover{
+            background-color: #ABB7C9;
+            color: black;
+        }
+
+        form,h5,h2 {
+            text-align: center;
+        }
+
+        input[type=submit]{
+            border: none;
+            color: white;
+            width: 300px;
+            height: 50px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 30px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        td {
+            vertical-align: top
+        }
+    </style>
+{% endblock %}
+
+{% block extracontent %}
+    <img src="{% static 'intranet_login/Logo_6_grau.png' %}" style="height: 120px; position: fixed; top: 70px; left: 10px">
+    <br>
+    <table>
+        <tr>
+            <td><h2>Regular Log in</h2><hr><br></td>
+            <td style="padding-left: 200px"><h2>Log in with SSI</h2><hr><br></td>
+        </tr>
+        <tr>
+            <td>
+                <form>
+                    <label for="username">Username:</label><br>
+                    <input type="text" id="username" name="username"><br>
+                    <label for="password">Password:</label><br>
+                    <input type="password" id="password" name="password"><br><br>
+                    <input class="button2" type="submit" value="Log in">
+                </form>
+            </td>
+            <td style="padding-left: 200px">
+                {% if available_schema %}
+                    <h3 style="color: darkred; text-align: center">You can't use 'Log in with SSI' right now.</h3><br>
+                    <h5 style="color: darkred">{{ available_schema }}</h5><br>
+                    <button class="button" style="margin-left: auto; margin-right: auto; width: 300px" onclick="window.location.href='{% url 'hr-schema' %}';">Go Back</button><br><br>
+                {% elif available_cred_def %}
+                    <h3 style="color: darkred; text-align: center">You can't use 'Log in with SSI' right now.</h3><br>
+                    <h5 style="color: darkred">{{ available_cred_def }}</h5><br>
+                    <button class="button" style="margin-left: auto; margin-right: auto; width: 300px" onclick="window.location.href='{% url 'hr-cred_def' %}';">Go Back</button><br><br>
+                {% else %}
+                    {% if name %}
+                        <button class="button" style="margin-left: auto; margin-right: auto; width: 300px" onclick="window.location.href='{% url 'work-login_loading' %}';">Log in as - {{ name }} -</button><br><br><br>
+                        <h5>If you are not {{ name }}, please click this button to generate a new invitation:</h5><br>
+                        <form method="post">{% csrf_token %}
+                            <button class="button" name="submit_new_invitation" style="margin-left: auto; margin-right: auto; width: 300px" onclick="window.location.href='{% url 'work-login_loading' %}';">Generate Invitation</button>
+                        </form>
+                    {% else %}
+                        <h5>Please scan the following QR-Code to establish a connection:</h5><br>
+                        <img id='barcode'
+                             src={{ qr_code }}
+                             alt=""
+                             title="Invitation Link"
+                             width="300"
+                             height="300"
+                             class="center"
+                        /><br>
+                        <h5>(Afterwards you will automatically receive a proof request on your smartphone)</h5>
+                    {% endif %}
+                    {% if connection %}
+                        <p>Connection established</p>
+                    {% endif %}
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+{% endblock %}

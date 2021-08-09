@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1 style="text-align: center; font-size: 75px">Welcome!</h1><hr><br><br>
+    <img class="center" src="{% static 'start/Start_Demo_Info.png' %}" style="width: 1000px"><br><hr><br>
+    <button class="button" style="height: 250px; width: 1000px; font-size: 150px; font-weight: bold; display: block; margin-left: auto; margin-right: auto" onclick="window.location.href='{% url 'hr-schema' %}';">Start Demo</button>
+{% endblock %}

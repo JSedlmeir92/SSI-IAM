@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}{% endblock %}
+
+{% block style %}{% endblock %}
+
+{% block content %}
+    <img src="{% static 'hr_dept/Logo_6_grau.png' %}" style="height: 120px; position: fixed; top: 70px; left: 10px">
+    {% include 'hr_dept/navbar_side.html' %}
+    {% block extracontent %}{% endblock %}
+{% endblock %}
