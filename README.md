@@ -2,6 +2,7 @@
 IAM with Hyperledger Indy and ACA-PY
 
 ## Preparations (tested on Ubuntu 20.04)
+- Clone the repository recursively (`git clone --recurse-submodules https://github.com/JSedlmeir92/SSI-IAM.git`)
 - Download Python 3.8 if not yet installed
 - Download an SSI wallet, e.g., the esatus wallet, from Google Playstore (Android) or App Store (iOS) 
 - Add the test ledger to the wallet by sending pool_transactions_genesis to it
